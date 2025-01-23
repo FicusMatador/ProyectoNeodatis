@@ -68,7 +68,6 @@
       </VBox>
    </children>
    <stylesheets>
-      <URL value="@css/menuStyles.css" />
       <URL value="@css/general.css" />
    </stylesheets>
 </GridPane>
