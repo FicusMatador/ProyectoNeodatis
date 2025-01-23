@@ -57,7 +57,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Button fx:id="inicioSesion" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Iniciar sesión">
+                  <Button fx:id="inicioSesion" mnemonicParsing="false" onAction="#inicioSesionOnAction" prefHeight="40.0" prefWidth="150.0" text="Iniciar sesión">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
