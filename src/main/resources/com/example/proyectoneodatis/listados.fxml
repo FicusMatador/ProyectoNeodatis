@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="1037.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoneodatis.controladores.listadosControlador">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.40001220703118" minHeight="10.0" prefHeight="85.99998779296868" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="76.60001220703123" minHeight="10.0" prefHeight="76.60001220703123" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+         <children>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#nuevoArticuloOnAction" styleClass="opciones" text="Nuevo artículo">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#borrarArticuloOnAction" styleClass="opciones" text="Borrar Artículo">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#modificarOnAction" styleClass="opciones" text="Modificar">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </Button>
+            <ComboBox fx:id="comboBox" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="183.0" promptText="Extension de Archivo" styleClass="opciones">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </ComboBox>
+            <Button fx:id="exportar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportarOnAction"  styleClass="opciones" text="Exportar" />
+         </children>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#atras">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" prefHeight="25.0" styleClass="filtroslabel" text="Filtros" />
+            <Label text="Código">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="codigo">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Denominación">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="denominacion">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Precio venta al Publico">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Spinner fx:id="pvp" editable="true" maxWidth="1.7976931348623157E308">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Spinner>
+            <Label text="Categoría">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="categoria">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Precio unitario">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Spinner fx:id="precioUnitario" editable="true" maxWidth="1.7976931348623157E308">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Spinner>
+            <Label text="Stock">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Spinner fx:id="stock" editable="true" maxWidth="1.7976931348623157E308">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Spinner>
+            <Button fx:id="buscar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buscarOnAction" text="Buscar">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+         <children>
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn id="denominacion" prefWidth="116.79998779296875" text="Denominación" />
+                  <TableColumn id="precioVenta" prefWidth="113.59991455078125" text="Precio Venta" />
+                  <TableColumn id="categoria" prefWidth="72.00006103515625" text="Categoría" />
+                  <TableColumn id="precioUnitario" prefWidth="109.59991455078125" text="Precio unitario" />
+                  <TableColumn id="stock" prefWidth="80.0001220703125" text="Stock" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
