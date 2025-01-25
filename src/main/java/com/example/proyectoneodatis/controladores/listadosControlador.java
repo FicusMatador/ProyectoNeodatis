@@ -28,4 +28,8 @@ public class listadosControlador {
     public void exportarOnAction(ActionEvent actionEvent) {
 
     }
+
+    public void filtrosOnAction(ActionEvent actionEvent) {
+
+    }
 }

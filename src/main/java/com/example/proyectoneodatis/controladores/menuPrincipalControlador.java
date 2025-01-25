@@ -19,4 +19,8 @@ public class menuPrincipalControlador {
     public void cerrarSesionOnAction(ActionEvent actionEvent) {
 
     }
+
+    public void cambiarContrasenaOnAction(ActionEvent actionEvent) {
+        
+    }
 }
