@@ -54,7 +54,7 @@
                   <Insets right="15.0" />
                </HBox.margin>
             </ComboBox>
-            <Button fx:id="exportar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportarOnAction"  styleClass="opciones" text="Exportar" />
+            <Button fx:id="exportar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportarOnAction" styleClass="opciones" text="Exportar" />
          </children>
       </HBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
@@ -150,11 +150,13 @@
          <children>
             <TableView prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn id="denominacion" prefWidth="116.79998779296875" text="Denominación" />
-                  <TableColumn id="precioVenta" prefWidth="113.59991455078125" text="Precio Venta" />
-                  <TableColumn id="categoria" prefWidth="72.00006103515625" text="Categoría" />
-                  <TableColumn id="precioUnitario" prefWidth="109.59991455078125" text="Precio unitario" />
-                  <TableColumn id="stock" prefWidth="80.0001220703125" text="Stock" />
+                  <TableColumn id="codigo" prefWidth="64.79998779296875" text="Código" />
+                <TableColumn id="denominacion" prefWidth="114.39996337890625" text="Denominación" />
+                  <TableColumn id="precioVenta" prefWidth="108.0" text="Precio Venta" />
+                  <TableColumn id="categoria" prefWidth="91.2000732421875" text="Categoría" />
+                  <TableColumn id="precioUnitario" prefWidth="114.39996337890625" text="Precio unitario" />
+                  <TableColumn id="stock" prefWidth="143.20001220703125" text="Stock" />
+                  <TableColumn id="denominacion" prefWidth="101.5999755859375" text="Denominación" />
               </columns>
             </TableView>
          </children>
