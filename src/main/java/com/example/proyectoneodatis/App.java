@@ -16,7 +16,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         // Cargar la primera escena
-        scene = new Scene(loadFXML("camposArticulos"), 1280, 720);
+        scene = new Scene(loadFXML("inicio"), 1280, 720);
         stage.setScene(scene);
         stage.setTitle("App");
         stage.show();

@@ -68,11 +68,16 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
-                  <Button fx:id="inicioSesion" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Iniciar sesión">
+                  <Button fx:id="inicioSesion" onAction="#iniciarSesion" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Iniciar sesión">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
+                  <Text fx:id="errorInicio" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario y/o contraseña incorrectos">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Text>
                </children>
             </VBox>
          </children>
