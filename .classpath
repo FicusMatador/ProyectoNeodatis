@@ -37,6 +37,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Acceso_a_datos/ProyectoNeodatis/neodatis-odb-1.9.30.689.jar"/>
+	<classpathentry kind="lib" path="E:/Acceso_a_datos/ProyectoNeodatis/neodatis-odb-1.9.30.689.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

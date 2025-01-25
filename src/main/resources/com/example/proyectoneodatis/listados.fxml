@@ -3,11 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -54,7 +51,11 @@
                   <Insets right="15.0" />
                </HBox.margin>
             </ComboBox>
-            <Button fx:id="exportar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportarOnAction" styleClass="opciones" text="Exportar" />
+            <Button fx:id="exportar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportarOnAction" styleClass="opciones" text="Exportar">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin></Button>
+            <Button fx:id="filtros" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#filtrosOnAction" styleClass="opciones" text="Filtros" />
          </children>
       </HBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
@@ -76,77 +77,7 @@
             <Insets />
          </GridPane.margin>
       </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
-         <children>
-            <Label maxWidth="1.7976931348623157E308" prefHeight="25.0" styleClass="filtroslabel" text="Filtros" />
-            <Label text="Código">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="codigo">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <Label text="Denominación">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="denominacion">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <Label text="Precio venta al Publico">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Spinner fx:id="pvp" editable="true" maxWidth="1.7976931348623157E308">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Spinner>
-            <Label text="Categoría">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="categoria">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <Label text="Precio unitario">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Spinner fx:id="precioUnitario" editable="true" maxWidth="1.7976931348623157E308">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Spinner>
-            <Label text="Stock">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Spinner fx:id="stock" editable="true" maxWidth="1.7976931348623157E308">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Spinner>
-            <Button fx:id="buscar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buscarOnAction" text="Buscar">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="5" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <children>
             <TableView prefHeight="200.0" prefWidth="200.0">
               <columns>
