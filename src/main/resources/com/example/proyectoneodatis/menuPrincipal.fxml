@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/general.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="com.example.proyectoneodatis.controladores.menuPrincipalControlador">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoneodatis.controladores.menuPrincipalControlador">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,17 +27,22 @@
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <children>
             <Label fx:id="title" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="276.0" text="Bienvenido" />
-            <Button fx:id="gestionarArticulos" mnemonicParsing="false" onAction="#gestionarArticulosOnAction"  prefHeight="36.0" prefWidth="200.0" text="Gestionar artículos">
+            <Button fx:id="gestionarArticulos" mnemonicParsing="false" onAction="#gestionarArticulosOnAction" prefHeight="36.0" prefWidth="200.0" text="Gestionar artículos">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </Button>
-            <Button fx:id="exportarArticulos" mnemonicParsing="false" onAction="#exportarArticulosOnAction"  prefHeight="36.0" prefWidth="200.0" text="Exportar artículos">
+            <Button fx:id="exportarArticulos" mnemonicParsing="false" onAction="#exportarArticulosOnAction" prefHeight="36.0" prefWidth="200.0" text="Exportar artículos">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="importarArticulos" mnemonicParsing="false" onAction="#importarArticulosOnAction"  prefHeight="36.0" prefWidth="200.0" text="Importar artículos">
+            <Button fx:id="importarArticulos" mnemonicParsing="false" onAction="#importarArticulosOnAction" prefHeight="36.0" prefWidth="200.0" text="Importar artículos">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="cambiarContrasena" mnemonicParsing="false" onAction="#cambiarContrasenaOnAction" prefHeight="36.0" prefWidth="200.0" text="Cambiar contraseña">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
