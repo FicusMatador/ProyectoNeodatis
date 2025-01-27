@@ -23,6 +23,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 
+import static com.example.proyectoneodatis.App.articulos;
+
 public class MenuPrincipalControlador {
 
     @FXML
@@ -38,84 +40,61 @@ public class MenuPrincipalControlador {
 
     @FXML
     public void exportarArticulosOnAction(ActionEvent actionEvent) {
+        if (articulos.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText("No hay artículos para exportar");
+            alert.setContentText("La lista de artículos está vacía. No se puede realizar la exportación.");
+            alert.showAndWait();
+            return;
+        }
 
+        // Generar el nombre del archivo dinámicamente con la fecha y hora actuales
+        String fechaHoraActual = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        String nombreArchivo = "articulos_exportados_" + fechaHoraActual + ".csv";
 
-        ODB odb = ODBFactory.open("Neodatis.test");
-        try{
-            Objects<Articulo> articulos = odb.getObjects(Articulo.class);
-            List<Articulo> listaArticulos = new ArrayList<>();
-            while (articulos.hasNext()) {
-                listaArticulos.add(articulos.next());
+        // Crear el FileChooser para que el usuario elija dónde guardar el archivo
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+        fileChooser.setInitialFileName(nombreArchivo);
+        File archivoSeleccionado = fileChooser.showSaveDialog(null);
 
-            }
-            System.out.println(listaArticulos.toString());
-            String fechaHoraActual = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss"));
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
-            fileChooser.setInitialFileName("articulos_" + fechaHoraActual + ".json");
-            File archivoSeleccionado = fileChooser.showSaveDialog(null);
+        if (archivoSeleccionado != null) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoSeleccionado))) {
+                // Escribir la cabecera del archivo CSV
+                writer.write("Codigo,Denominacion,PVP,Categoria,UV,Stock");
+                writer.newLine();
 
-            if (archivoSeleccionado != null) {
+                // Escribir los datos de los artículos
+                for (Articulo articulo : articulos) {
+                    String lineaCsv = String.format(
+                            "%d,\"%s\",%.2f,\"%s\",%d,%d",
+                            articulo.getCodigo(),
+                            articulo.getDenominacion(),
+                            articulo.getPrecioDeVentaAlPublico(),
+                            articulo.getCategoria(),
+                            articulo.getUnidadesVendidas(),
+                            articulo.getStock()
+                    );
+                    writer.write(lineaCsv);
+                    writer.newLine();
+                }
 
-                exportarAJson(listaArticulos,archivoSeleccionado);
+                // Mostrar alerta de éxito
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Éxito");
                 alert.setHeaderText("Exportación Exitosa");
                 alert.setContentText("Los artículos se han exportado correctamente a: " + archivoSeleccionado.getAbsolutePath());
                 alert.showAndWait();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Error exportando los artículos: " + e.getMessage());
-        } finally {
-
-            if (odb != null) {
-                odb.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error de Exportación");
+                alert.setContentText("Hubo un error al exportar los artículos: " + e.getMessage());
+                alert.showAndWait();
             }
         }
-
-    }
-
-    public void exportarAJson(List<Articulo> listaArticulos,File archivoSalida){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoSalida))) {
-            writer.write("[\n");
-            for (int i = 0; i < listaArticulos.size(); i++) {
-                Articulo art = listaArticulos.get(i);
-                String articuloJson = String.format(
-                        "  {\n" +
-                                "    \"codigo\": %d,\n" +
-                                "    \"denominacion\": \"%s\",\n" +
-                                "    \"pvp\": %.2f,\n" +
-                                "    \"categoria\": \"%s\",\n" +
-                                "    \"uv\": %.2f,\n" +
-                                "    \"stock\": %d\n" +
-                                "  }",
-                        art.getCodigo(),
-                        art.getDenominacion(),
-                        art.getPrecioDeVentaAlPublico(),
-                        art.getCategoria(),
-                        art.getUnidadesVendidas(),
-                        art.getStock()
-                );
-                writer.write(articuloJson);
-                if (i < listaArticulos.size() - 1) {
-                    writer.write(",");
-                }
-                writer.write("\n");
-            }
-            writer.write("]\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Error escribiendo el archivo JSON: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    public void importarArticulosOnAction(ActionEvent actionEvent) {
-
-
-
     }
 
     @FXML
@@ -131,4 +110,7 @@ public class MenuPrincipalControlador {
         App.setRoot("cambiarContrasena");
     }
 
+    public void importarArticulosOnAction(ActionEvent actionEvent) {
+
+    }
 }
