@@ -9,6 +9,6 @@ public class CamposArticulosControlador {
     }
 
     public void adelante(ActionEvent actionEvent) {
-        
+
     }
 }
