@@ -1,4 +1,9 @@
 package com.example.proyectoneodatis.controladores;
 
-public class cambiarContrasenaControlador {
+import javafx.event.ActionEvent;
+
+public class CambiarContrasenaControlador {
+    public void cambiarContrasenaOnAction(ActionEvent event) {
+
+    }
 }

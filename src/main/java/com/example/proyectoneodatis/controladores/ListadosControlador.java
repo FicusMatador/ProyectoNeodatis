@@ -2,7 +2,7 @@ package com.example.proyectoneodatis.controladores;
 
 import javafx.event.ActionEvent;
 
-public class listadosControlador {
+public class ListadosControlador {
 
     public void atras(ActionEvent actionEvent) {
 
