@@ -8,5 +8,6 @@ module com.example.proyectoneodatis {
 
 
     opens com.example.proyectoneodatis.controladores to javafx.fxml;
+    opens com.example.proyectoneodatis.Modelo to neodatis.odb;
     exports com.example.proyectoneodatis;
 }

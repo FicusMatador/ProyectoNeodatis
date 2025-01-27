@@ -99,7 +99,7 @@ public class MenuPrincipalControlador {
                         art.getDenominacion(),
                         art.getPrecioDeVentaAlPublico(),
                         art.getCategoria(),
-                        art.getPrecioUnitario(),
+                        art.getUnidadesVendidas(),
                         art.getStock()
                 );
                 writer.write(articuloJson);
