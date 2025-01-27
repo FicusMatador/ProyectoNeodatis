@@ -50,10 +50,7 @@ public void iniciarSesion(ActionEvent event){
         textoContrasena.setVisible(true);
     }else{
         if(!usuario.getText().equals(Constantes.USUARIO) || !contrasena.getText().equals(Constantes.CONTRASENA)){
-        
-       
         errorInicio.setVisible(true);
-
     }else{
 
         try {

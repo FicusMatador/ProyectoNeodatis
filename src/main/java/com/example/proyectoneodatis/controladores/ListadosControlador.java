@@ -42,33 +42,35 @@ public class ListadosControlador{
     private TableColumn<Articulo, Integer> colStock;
 
     private ObservableList<Articulo> listaArticulos;
+    
+    ODB odb = ODBFactory.open("neonatis.test");
 
     @FXML
     public void initialize() {
-            // Configurar las columnas
-            colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        // Configurar las columnas
+        colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colDenominacion.setCellValueFactory(new PropertyValueFactory<>("denominacion"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precioDeVentaAlPublico"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         colUnidadesVendidas.setCellValueFactory(new PropertyValueFactory<>("unidadesVendidas"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        // Agregar los artículos
-
-        listaArticulos = FXCollections.observableArrayList();
-        ODB odb = ODBFactory.open("neonatis.test");
-        for (Articulo articulo : articulos) {
-            odb.store(articulo);
-            System.out.println(articulo);
+        // Si la base de datos estuviera vacia, se agregan los artículos
+        if (!odb.getObjects(Articulo.class).isEmpty()) {
+            listaArticulos = FXCollections.observableArrayList();
+            for (Articulo articulo : articulos) {
+                odb.store(articulo);
+                System.out.println(articulo);
+            }
+            var objetos = odb.getObjects(Articulo.class);
+            while (objetos.hasNext()) {
+                listaArticulos.add((Articulo) objetos.next());
+            }
         }
-        var objetos = odb.getObjects(Articulo.class);
-        while (objetos.hasNext()) {
-            listaArticulos.add((Articulo) objetos.next());
-        }
-        odb.close();
         tablaArticulos.setItems(listaArticulos);
     }
 
     public void atras(ActionEvent actionEvent) throws IOException {
+        odb.close();
         App.setRoot("menuPrincipal");
     }
 
@@ -77,12 +79,13 @@ public class ListadosControlador{
     }
 
     public void nuevoArticuloOnAction(ActionEvent actionEvent) throws IOException {
+        odb.close();
         App.setRoot("crearArticulo");
     }
 
     public void borrarArticuloOnAction(ActionEvent actionEvent) {
-
-    }
+    	odb.delete(tablaArticulos.getSelectionModel().getSelectedItem());
+   	}
 
     public void modificarOnAction(ActionEvent actionEvent) {
 

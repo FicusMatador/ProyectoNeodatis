@@ -22,14 +22,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        articulos.add(new Articulo(1,"Portatil Acer", 500.0, "Informática", 10, 20));
-        articulos.add(new Articulo(2,"Pala Pádel", 100.0, "Deportes", 5, 30));
-        articulos.add(new Articulo(3,"Caja Lápices", 6.0, "Escritorio", 10, 6));
-        articulos.add(new Articulo(4,"Marcadores", 10.0, "Escritorio", 20, 19));
-        articulos.add(new Articulo(5,"Memoria 32GB", 120.0, "Informática", 8, 10));
-        articulos.add(new Articulo(6,"Micro Intel", 150.0, "Informática", 4, 10));
-        articulos.add(new Articulo(7,"Bolas Pádel", 5.0, "Deportes", 15, 30));
-        articulos.add(new Articulo(8,"Falda Pádel", 15.0, "Deportes", 10, 10));
         if (contrasenaInicioFile.exists() && contrasenaInicioFile.length() > 0) {
             try (BufferedReader reader = new BufferedReader(new FileReader(contrasenaInicioFile))) {
                 String contenido = reader.readLine();
