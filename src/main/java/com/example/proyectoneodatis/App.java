@@ -41,7 +41,7 @@ public class App extends Application {
             }
         }
         // Cargar la primera escena
-        scene = new Scene(loadFXML("listados"), 1280, 720);
+        scene = new Scene(loadFXML("cambiarContrasena"), 1280, 720);
         stage.setScene(scene);
         stage.setTitle("App");
         stage.show();

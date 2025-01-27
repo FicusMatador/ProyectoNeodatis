@@ -59,5 +59,8 @@ public class CambiarContrasenaControlador {
 
     }
 
+    public void volverOnAction(ActionEvent actionEvent) throws IOException {
+        App.setRoot("inicio");
+    }
 }
 

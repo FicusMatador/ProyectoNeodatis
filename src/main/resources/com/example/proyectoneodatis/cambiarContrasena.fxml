@@ -76,5 +76,10 @@
             </Button>
          </children>
       </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="volver" mnemonicParsing="false" onAction="#volverOnAction" text="Volver" />
+         </children>
+      </VBox>
    </children>
 </GridPane>
