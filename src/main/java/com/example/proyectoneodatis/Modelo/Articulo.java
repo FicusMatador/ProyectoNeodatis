@@ -6,12 +6,12 @@ public class Articulo {
     private String denominacion;
     private Double precioDeVentaAlPublico;
     private String categoria;
-    private Double unidadesVendidas; // precio unitario
+    private Integer unidadesVendidas; // precio unitario
     private Integer stock;
 
 
 
-    public Articulo(int i, String string, Double j, String string2, Double k, int l) {
+    public Articulo(int i, String string, Double j, String string2, Integer k, int l) {
         this.codigo=i;
         this.denominacion = string;
         this.precioDeVentaAlPublico = j;
@@ -52,11 +52,11 @@ public class Articulo {
         this.categoria = categoria;
     }
 
-    public Double getUnidadesVendidas() {
+    public Integer getUnidadesVendidas() {
         return unidadesVendidas;
     }
 
-    public void setUnidadesVendidas(Double unidadesVendidas) {
+    public void setUnidadesVendidas(Integer unidadesVendidas) {
         this.unidadesVendidas = unidadesVendidas;
     }
 
@@ -75,7 +75,7 @@ public class Articulo {
                 ", denominacion='" + denominacion + '\'' +
                 ", precioDeVentaAlPublico=" + precioDeVentaAlPublico +
                 ", categoria='" + categoria + '\'' +
-                ", precioUnitario=" + unidadesVendidas +
+                ", unidadesVendidas=" + unidadesVendidas +
                 ", stock=" + stock +
                 '}';
     }

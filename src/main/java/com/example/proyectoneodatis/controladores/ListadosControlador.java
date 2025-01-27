@@ -25,13 +25,15 @@ public class ListadosControlador{
     private TableColumn<Articulo, String> colDenominacion;
 
     @FXML
-    private TableColumn<Articulo, Double> colPrecioVenta;
+    private TableColumn<Articulo, Double> colPrecio;
 
     @FXML
     private TableColumn<Articulo, String> colCategoria;
 
     @FXML
-    private TableColumn<Articulo, Double> colPrecioUnitario;
+    private List<Articulo> articulos = new ArrayList<>();
+    @FXML
+    private TableColumn<Articulo, Integer> colUnidadesVendidas;
 
     @FXML
     private TableColumn<Articulo, Integer> colStock;
@@ -40,35 +42,33 @@ public class ListadosControlador{
 
     @FXML
     public void initialize() {
-        // Configurar las columnas
-        colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+            // Configurar las columnas
+            colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colDenominacion.setCellValueFactory(new PropertyValueFactory<>("denominacion"));
-        colPrecioVenta.setCellValueFactory(new PropertyValueFactory<>("precioVenta"));
+        colPrecio.setCellValueFactory(new PropertyValueFactory<>("precioDeVentaAlPublico"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        colPrecioUnitario.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
+        colUnidadesVendidas.setCellValueFactory(new PropertyValueFactory<>("unidadesVendidas"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        List<Articulo> articulos = new ArrayList<>();
         // Agregar los artículos
-        articulos.add(new Articulo(1,"Portatil Acer", 500.0, "Informática", 10.0, 20));
-        articulos.add(new Articulo(2,"Pala Pádel", 100.0, "Deportes", 5.0, 30));
-        articulos.add(new Articulo(3,"Caja Lápices", 6.0, "Escritorio", 10.0, 6));
-        articulos.add(new Articulo(4,"Marcadores", 10.0, "Escritorio", 20.0, 19));
-        articulos.add(new Articulo(5,"Memoria 32GB", 120.0, "Informática", 8.0, 10));
-        articulos.add(new Articulo(6,"Micro Intel", 150.0, "Informática", 4.0, 10));
-        articulos.add(new Articulo(7,"Bolas Pádel", 5.0, "Deportes", 15.0, 30));
-        articulos.add(new Articulo(8,"Falda Pádel", 15.0, "Deportes", 10.0, 10));
+        articulos.add(new Articulo(1,"Portatil Acer", 500.0, "Informática", 10, 20));
+        articulos.add(new Articulo(2,"Pala Pádel", 100.0, "Deportes", 5, 30));
+        articulos.add(new Articulo(3,"Caja Lápices", 6.0, "Escritorio", 10, 6));
+        articulos.add(new Articulo(4,"Marcadores", 10.0, "Escritorio", 20, 19));
+        articulos.add(new Articulo(5,"Memoria 32GB", 120.0, "Informática", 8, 10));
+        articulos.add(new Articulo(6,"Micro Intel", 150.0, "Informática", 4, 10));
+        articulos.add(new Articulo(7,"Bolas Pádel", 5.0, "Deportes", 15, 30));
+        articulos.add(new Articulo(8,"Falda Pádel", 15.0, "Deportes", 10, 10));
         listaArticulos = FXCollections.observableArrayList();
         ODB odb = ODBFactory.open("neonatis.test");
         for (Articulo articulo : articulos) {
             odb.store(articulo);
+            System.out.println(articulo);
         }
         var objetos = odb.getObjects(Articulo.class);
         while (objetos.hasNext()) {
             listaArticulos.add((Articulo) objetos.next());
         }
         odb.close();
-
-        // Enlazar datos a la tabla
         tablaArticulos.setItems(listaArticulos);
     }
 
