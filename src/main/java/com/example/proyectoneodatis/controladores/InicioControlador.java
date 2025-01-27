@@ -19,13 +19,8 @@ private TextField usuario;
 private PasswordField contrasena;
 
 @FXML
-private Text textoUsuario;
+private Text textoUsuario,textoContrasena,errorInicio;
 
-@FXML
-private Text textoContrasena;
-
-@FXML
-private Text errorInicio; 
 
 
 @FXML
