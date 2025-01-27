@@ -1,5 +1,6 @@
 package com.example.proyectoneodatis.controladores;
 
+import com.example.proyectoneodatis.App;
 import com.example.proyectoneodatis.Modelo.Articulo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,16 +68,16 @@ public class ListadosControlador{
         tablaArticulos.setItems(listaArticulos);
     }
 
-    public void atras(ActionEvent actionEvent) {
-
+    public void atras(ActionEvent actionEvent) throws IOException {
+        App.setRoot("menuPrincipal");
     }
 
     public void buscarOnAction(ActionEvent actionEvent) {
 
     }
 
-    public void nuevoArticuloOnAction(ActionEvent actionEvent) {
-
+    public void nuevoArticuloOnAction(ActionEvent actionEvent) throws IOException {
+        App.setRoot("crearArticulo");
     }
 
     public void borrarArticuloOnAction(ActionEvent actionEvent) {
