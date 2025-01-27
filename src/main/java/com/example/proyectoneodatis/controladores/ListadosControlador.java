@@ -1,17 +1,52 @@
 package com.example.proyectoneodatis.controladores;
 
 import com.example.proyectoneodatis.Modelo.Articulo;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
-import org.neodatis.odb.Objects;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListadosControlador{
+    @FXML
+    private TableView<Articulo> tablaArticulos;
 
-    public void initialize(){
+    @FXML
+    private TableColumn<Articulo, Integer> colCodigo;
+
+    @FXML
+    private TableColumn<Articulo, String> colDenominacion;
+
+    @FXML
+    private TableColumn<Articulo, Double> colPrecioVenta;
+
+    @FXML
+    private TableColumn<Articulo, String> colCategoria;
+
+    @FXML
+    private TableColumn<Articulo, Double> colPrecioUnitario;
+
+    @FXML
+    private TableColumn<Articulo, Integer> colStock;
+
+    private ObservableList<Articulo> listaArticulos;
+
+    @FXML
+    public void initialize() {
+        // Configurar las columnas
+        colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colDenominacion.setCellValueFactory(new PropertyValueFactory<>("denominacion"));
+        colPrecioVenta.setCellValueFactory(new PropertyValueFactory<>("precioVenta"));
+        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colPrecioUnitario.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
+        colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         List<Articulo> articulos = new ArrayList<>();
 
         // Agregar los artículos
@@ -23,23 +58,19 @@ public class ListadosControlador{
         articulos.add(new Articulo(6,"Micro Intel", 150.0, "Informática", 4.0, 10));
         articulos.add(new Articulo(7,"Bolas Pádel", 5.0, "Deportes", 15.0, 30));
         articulos.add(new Articulo(8,"Falda Pádel", 15.0, "Deportes", 10.0, 10));
-        ODB odb = ODBFactory.open("neonatis.test"); // Abrir BD
+        listaArticulos = FXCollections.observableArrayList();
+        ODB odb = ODBFactory.open("neonatis.test");
         for (Articulo articulo : articulos) {
             odb.store(articulo);
         }
-
-        //recuperamos todos los objetos
-        Objects<Articulo> objects = odb.getObjects(Articulo.class);
-        System.out.printf("%d Jugadores: %n", objects.size());
-        int i = 1;
-
-        //visualizar los objetos
-        while (objects.hasNext()) {
-            Articulo jug = objects.next();
-            System.out.printf("%d: %s, %s, %s,%s, %d\n", i++, jug.getDenominacion(), jug.getPrecioDeVentaAlPublico(), jug.getCategoria(), jug.getUnidadesVendidas(),jug.getStock());
-
+        var objetos = odb.getObjects(Articulo.class);
+        while (objetos.hasNext()) {
+            listaArticulos.add((Articulo) objetos.next());
         }
-        odb.close(); // Cerrar BD
+        odb.close();
+
+        // Enlazar datos a la tabla
+        tablaArticulos.setItems(listaArticulos);
     }
 
     public void atras(ActionEvent actionEvent) {
