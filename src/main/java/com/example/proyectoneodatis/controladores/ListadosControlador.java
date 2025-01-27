@@ -48,7 +48,7 @@ public class ListadosControlador{
         colPrecioUnitario.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         List<Articulo> articulos = new ArrayList<>();
-
+        //m
         // Agregar los artículos
         articulos.add(new Articulo(1,"Portatil Acer", 500.0, "Informática", 10.0, 20));
         articulos.add(new Articulo(2,"Pala Pádel", 100.0, "Deportes", 5.0, 30));
