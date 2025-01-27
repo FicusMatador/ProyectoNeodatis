@@ -11,4 +11,12 @@ public class CamposArticulosControlador {
     public void adelante(ActionEvent actionEvent) {
 
     }
+
+    public void editarOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void salirOnAction(ActionEvent actionEvent) {
+
+    }
 }
