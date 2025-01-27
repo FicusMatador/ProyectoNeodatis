@@ -4,10 +4,21 @@ public class Articulo {
 
     private Integer codigo;
     private String denominacion;
-    private Double precioDeVentoAlPublico;
+    private Double precioDeVentaAlPublico;
     private String categoria;
     private Double precioUnitario; // precio unitario
     private Integer stock;
+
+
+
+    public Articulo(int i, String string, Double j, String string2, Double k, int l) {
+        this.codigo=i;
+        this.denominacion = string;
+        this.precioDeVentaAlPublico = j;
+        this.categoria = string2;
+        this.precioUnitario = k;
+        this.stock = l;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -25,12 +36,12 @@ public class Articulo {
         this.denominacion = denominacion;
     }
 
-    public Double getPrecioDeVentoAlPublico() {
-        return precioDeVentoAlPublico;
+    public Double getPrecioDeVentaAlPublico() {
+        return precioDeVentaAlPublico;
     }
 
-    public void setPrecioDeVentoAlPublico(Double precioDeVentoAlPublico) {
-        this.precioDeVentoAlPublico = precioDeVentoAlPublico;
+    public void setPrecioDeVentaAlPublico(Double precioDeVentaAlPublico) {
+        this.precioDeVentaAlPublico = precioDeVentaAlPublico;
     }
 
     public String getCategoria() {
@@ -62,7 +73,7 @@ public class Articulo {
         return "Articulo{" +
                 "codigo=" + codigo +
                 ", denominacion='" + denominacion + '\'' +
-                ", precioDeVentoAlPublico=" + precioDeVentoAlPublico +
+                ", precioDeVentaAlPublico=" + precioDeVentaAlPublico +
                 ", categoria='" + categoria + '\'' +
                 ", precioUnitario=" + precioUnitario +
                 ", stock=" + stock +
