@@ -32,12 +32,8 @@ public class MenuPrincipalControlador {
     }
 
     @FXML
-    public void gestionarArticulosOnAction(ActionEvent actionEvent) {
-        try {
-            App.loadFXML("camposArticulos");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void gestionarArticulosOnAction(ActionEvent actionEvent) throws IOException {
+        App.setRoot("listados");
     }
 
     @FXML
