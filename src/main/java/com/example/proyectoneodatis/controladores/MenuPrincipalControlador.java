@@ -131,8 +131,8 @@ public class MenuPrincipalControlador {
         }
     }
 
-    public void cambiarContrasenaOnAction(ActionEvent actionEvent) {
-
+    public void cambiarContrasenaOnAction(ActionEvent actionEvent) throws IOException {
+        App.setRoot("cambiarContrasena");
     }
 
 }

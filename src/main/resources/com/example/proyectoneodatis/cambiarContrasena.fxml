@@ -69,7 +69,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <Button fx:id="enviar" mnemonicParsing="false" onAction="#cambiarContrasenaOnAction" text="Enviar">
+            <Button fx:id="enviar" defaultButton="true" mnemonicParsing="false" onAction="#cambiarContrasenaOnAction" text="Enviar">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

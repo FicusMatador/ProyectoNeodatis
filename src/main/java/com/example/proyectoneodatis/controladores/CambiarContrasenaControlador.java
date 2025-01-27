@@ -1,10 +1,18 @@
 package com.example.proyectoneodatis.controladores;
 
+import com.example.proyectoneodatis.App;
 import com.example.proyectoneodatis.Modelo.Constantes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.text.Text;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import static com.example.proyectoneodatis.App.contrasenaInicioFile;
 
 public class CambiarContrasenaControlador {
 
@@ -20,7 +28,7 @@ public class CambiarContrasenaControlador {
         contrasenaAntigua.setVisible(false);
 
     }
-    public void cambiarContrasenaOnAction(ActionEvent event) {
+    public void cambiarContrasenaOnAction(ActionEvent event) throws IOException {
         initialize();
         if (contrasenaVieja.getText().isEmpty() || contrasenaNueva.getText().isEmpty() || contrasenaNueva2.getText().isEmpty()) {
             camposVacios.setVisible(true);
@@ -34,7 +42,22 @@ public class CambiarContrasenaControlador {
             contrasenaCoincidir.setVisible(true);
             return;
         }
+        Constantes.CONTRASENA = contrasenaNueva.getText();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(contrasenaInicioFile))) {
+            writer.write(Constantes.CONTRASENA);
+            writer.flush();
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Cambio de Contraseña");
+            alert.setHeaderText(null);
+            alert.setContentText("La contraseña ha sido cambiada exitosamente.");
+            alert.showAndWait();
+        } catch (IOException e) {
+            System.err.println("Error al escribir la nueva contraseña en el archivo: " + e.getMessage());
+        }
+        App.setRoot("inicio");
 
     }
+
 }
+
