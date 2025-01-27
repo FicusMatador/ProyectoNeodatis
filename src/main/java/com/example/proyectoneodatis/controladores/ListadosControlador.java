@@ -14,6 +14,8 @@ import org.neodatis.odb.ODBFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.proyectoneodatis.App.articulos;
+
 public class ListadosControlador{
     @FXML
     private TableView<Articulo> tablaArticulos;
@@ -30,8 +32,7 @@ public class ListadosControlador{
     @FXML
     private TableColumn<Articulo, String> colCategoria;
 
-    @FXML
-    private List<Articulo> articulos = new ArrayList<>();
+
     @FXML
     private TableColumn<Articulo, Integer> colUnidadesVendidas;
 
@@ -50,14 +51,7 @@ public class ListadosControlador{
         colUnidadesVendidas.setCellValueFactory(new PropertyValueFactory<>("unidadesVendidas"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         // Agregar los artículos
-        articulos.add(new Articulo(1,"Portatil Acer", 500.0, "Informática", 10, 20));
-        articulos.add(new Articulo(2,"Pala Pádel", 100.0, "Deportes", 5, 30));
-        articulos.add(new Articulo(3,"Caja Lápices", 6.0, "Escritorio", 10, 6));
-        articulos.add(new Articulo(4,"Marcadores", 10.0, "Escritorio", 20, 19));
-        articulos.add(new Articulo(5,"Memoria 32GB", 120.0, "Informática", 8, 10));
-        articulos.add(new Articulo(6,"Micro Intel", 150.0, "Informática", 4, 10));
-        articulos.add(new Articulo(7,"Bolas Pádel", 5.0, "Deportes", 15, 30));
-        articulos.add(new Articulo(8,"Falda Pádel", 15.0, "Deportes", 10, 10));
+
         listaArticulos = FXCollections.observableArrayList();
         ODB odb = ODBFactory.open("neonatis.test");
         for (Articulo articulo : articulos) {
